@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import Card from 'react-bootstrap/Card';
+//import link
+import { Link } from "react-router-dom";
 
 const MovieItem = (props)=> {
   useEffect(() => {
@@ -16,6 +18,8 @@ const MovieItem = (props)=> {
             <footer>{props.mymovie.year}</footer>
           </blockquote>
         </Card.Body>
+        {/*Add comment here*/}
+        <Link to={"/edit/" + props.mymovie._id} className="btn btn-primary">Edit</Link>
       </Card>
     </div>
   );
