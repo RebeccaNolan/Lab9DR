@@ -37,6 +37,18 @@ app.get('/api/movie/:id', async (req ,res)=>{
   res.json(movie);
 })
 
+//Fetches movie by ID/ used to retrieve current movie details, shown in edit form
+app.get('/api/movie/:id', async (req, res) => {
+  let movie = await movieModel.findById({ _id: req.params.id });
+  res.send(movie);
+});
+
+//Updates movie info - user submits edited data, takes updated details and updates database
+app.put('/api/movie/:id', async (req, res) => {
+  let movie = await movieModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+  res.send(movie); //returns movie to confirm change
+});
+
 app.post('/api/movies',async (req, res)=>{
     console.log(req.body.title);
     const {title, year, poster} = req.body;
