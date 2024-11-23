@@ -1,13 +1,16 @@
-import { useEffect } from "react";
-import Card from 'react-bootstrap/Card';
-//import link
-import { Link } from "react-router-dom";
+import { useEffect } from "react"; //hook for side effects
+import Card from 'react-bootstrap/Card'; //bootstrap componenet for styling
+//import link 
+import { Link } from "react-router-dom"; //react router componenet for navigation
 
+//MovieItem functional component
 const MovieItem = (props)=> {
+  //useEffect to log movie data when mymovie prop changes
   useEffect(() => {
-    console.log("Movie Item:", props.mymovie);
+    console.log("Movie Item:", props.mymovie); //log movie for debugging
   }, [props.mymovie]); // Only run this effect when the mymovie prop changes
 
+  //form to display movie
   return (
     <div>
       <Card>
