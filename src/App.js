@@ -16,6 +16,7 @@ function App() {
         <Route path="/" element={<Content />} />
         <Route path="/read" element={<Read />} />
         <Route path="/create" element={<Create />} />
+        //rout added for edit page
         <Route path="/edit/:id" element={<Edit />} />
       </Routes>
       <Footer />
