@@ -72,12 +72,12 @@ app.post('/api/movies',async (req, res)=>{
     res.status(201).json({"message":"Movie Added!",Movie:newMovie}); //respond with a success message and added movie
 })
 
-//deletes movie
+//deletes movie by ID
 app.delete('/api/movie/:id', async (req, res) => {
   
-  console.log('Deleting movie with ID:', req.params.id);
-  const movie = await movieModel.findByIdAndDelete(req.params.id);
-  res.status(200).send({ message: "Movie deleted successfully", movie });
+  console.log('Deleting movie with ID:', req.params.id); //log ID of movie to be deleted
+  const movie = await movieModel.findByIdAndDelete(req.params.id); //find movie doc by ID and delete from database
+  res.status(200).send({ message: "Movie deleted successfully", movie }); //responde with success message and movie details
   
 })
 
