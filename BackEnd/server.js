@@ -15,7 +15,7 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*"); //allow requests from any origin
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS"); //allow specific HTTP methods
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"); //allow specific headers
-  next();
+  next();  
 });
 
 //allows json to parse info out of http request
