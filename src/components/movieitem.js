@@ -13,14 +13,16 @@ const MovieItem = (props)=> {
     console.log("Movie Item:", props.mymovie); //log movie for debugging
   }, [props.mymovie]); // Only run this effect when the mymovie prop changes
 
+  //function to handel movie deletion
   const handleDelete = (e) => {
-    e.preventDefault();
+    e.preventDefault(); //prevent default from submission behaviour
+    //send delete request to API - delete movie by ID
     axios.delete('http://localhost:4000/api/movie/' + props.mymovie._id)
         .then(() => {
-            props.Reload(); // Refresh the movie list after deletion
+            props.Reload(); // call reload function from propr to Refresh the movie list after deletion
         })
         .catch((error) => {
-            console.error("Error deleting movie:", error);
+            console.error("Error deleting movie:", error); //log error if delete fails
         });
   };
   //form to display movie
@@ -36,11 +38,11 @@ const MovieItem = (props)=> {
         </Card.Body>
         <Link to={"/edit/" + props.mymovie._id} className="btn btn-primary">Edit</Link>
       </Card>
-      {/*Added button*/}
+      {/*button to delete movie, calls handleDelete*/}
       <Button variant="danger" onClick={handleDelete}>Delete</Button>
     </div>
   );
 }
 
 
-export default MovieItem;
+export default MovieItem; //export componenet to be used in other parts of the app
