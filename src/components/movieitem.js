@@ -36,6 +36,7 @@ const MovieItem = (props)=> {
         </Card.Body>
         <Link to={"/edit/" + props.mymovie._id} className="btn btn-primary">Edit</Link>
       </Card>
+      {/*Added button*/}
       <Button variant="danger" onClick={handleDelete}>Delete</Button>
     </div>
   );

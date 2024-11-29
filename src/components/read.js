@@ -6,24 +6,27 @@ const Read = () => {
 
   const [movies, setMovies] = useState([]);
 
-  useEffect(() => {
-    
+  const Reload = () => {
+    console.log("Reloading movie data...");
     axios.get('http://localhost:4000/api/movies')
-      .then((response) => {
-        console.log(response.data);
-        setMovies(response.data.movies);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  },[]);
+        .then((response) => {
+          setMovies(response.data.movies);
+        })
+        .catch((error) => {
+            console.error("Error reloading data:", error);
+        });
+};
 
-  return (
+useEffect(() => {
+    Reload();
+}, []);
+
+return (
     <div>
-      <h3>Hello from read component!</h3>
-      <Movies myMovies={movies} />
+        <h2>Movie List</h2>
+        <Movies myMovies={movies} ReloadData={Reload} />
     </div>
-  );
+);
 }
 
 export default Read;
